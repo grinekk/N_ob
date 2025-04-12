@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
     <style>
-        /* Dodatkowe style dla białego ekranu QR */
             #whiteScreen {
             display: none;
             position: fixed;
@@ -30,6 +29,7 @@
             text-align: center;
             margin-top: 10px;
         }
+            
         
         .qr-footer {
             text-align: center;
@@ -41,37 +41,39 @@
         }
         
         .qr-header {
-            display: flex;
-            align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 10px;
-            position: relative;
+        display: flex;
+        align-items: center;
+        padding: 15px 0;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 10px;
+        position: relative;
         }
         
         .qr-header img {
             height: 24px;
-            margin-right: 10px;
             cursor: pointer;
+            position: absolute;
+            left: 0;
         }
         
         .qr-header h1 {
             color: #000000;
             font-size: 18px;
-            margin: 0;
-            flex-grow: 1;
+            margin: 0 auto;
+            width: 100%;
+            text-align: center;
         }
         
         .qr-instructions {
             text-align: center;
-            margin: -10px 0 20px 0; /* Zmniejszamy górny margines aby podnieść wyżej */
+            margin: -10px 0 20px 0;
         }
         
         .qr-code-title {
             font-size: 22px;
             font-weight: bold;
             text-align: center;
-            margin: 0 0 20px 0; /* Dodajemy margines tylko na dole */
+            margin: 0 0 20px 0;
         }
     </style>
 </head>
@@ -91,8 +93,8 @@
         
         <div class="qr-content">
             
-            <div style="margin: 20px 0;">
-                <img src="assets/images/QR.png" style="width: 400px; height: 400; border: 1px solid #eee;">
+            <div style="margin: 10px 0;">
+                <img src="assets/images/QR.png" style="width: 350px; height: 350; border: 1px solid #eee;">
             </div>
             
             <div style="font-size: 40px; font-weight: bold; letter-spacing: 3px; margin: 20px 0;">
@@ -110,7 +112,6 @@
         </div>
     </div>
     
-    <!-- Reszta istniejącego kodu -->
     <div class="error">
         <div class="opacity close"></div>
         <div class="error_box">
@@ -170,12 +171,10 @@
 
     <script src="assets/bar.js"></script>
     <script>
-        // Obsługa białego ekranu QR
         const whiteScreen = document.getElementById('whiteScreen');
         const countdownEl = document.getElementById('countdown');
         const backButton = document.getElementById('backToQRMenu');
         
-        // Timer
         function startCountdown() {
             let minutes = 2;
             let seconds = 30;
@@ -204,7 +203,6 @@
             whiteScreen.style.display = 'none';
         });
         
-        // Pozostała istniejąca logika
         document.querySelectorAll(".action:not(#showQR)").forEach((element) => {
             element.addEventListener('click', () => {
                 document.querySelector(".error").classList.add("error_open");
