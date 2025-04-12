@@ -135,13 +135,11 @@
             }
         }
 
-        // Update welcome message based on time of day
         const hour = new Date().getHours();
         if (hour >= 18) {
             document.querySelector('.login-welcome').textContent = 'Dobry wieczór!';
         }
 
-        // Prevent access to main content
         document.addEventListener('keydown', function(e) {
             if (e.ctrlKey && e.shiftKey && e.key === 'I') {
                 e.preventDefault();

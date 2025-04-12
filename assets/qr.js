@@ -12,3 +12,4 @@ document.querySelectorAll(".close").forEach((element) => {
         error.classList.remove("error_open");
     })
 })
+//dada
