@@ -9,8 +9,13 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-            #whiteScreen {
+        body, * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        #whiteScreen {
             display: none;
             position: fixed;
             top: 0;
@@ -30,7 +35,6 @@
             margin-top: 10px;
         }
             
-        
         .qr-footer {
             text-align: center;
             margin-bottom: 30px;
@@ -41,12 +45,12 @@
         }
         
         .qr-header {
-        display: flex;
-        align-items: center;
-        padding: 15px 0;
-        border-bottom: 1px solid #eee;
-        margin-bottom: 10px;
-        position: relative;
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 10px;
+            position: relative;
         }
         
         .qr-header img {
@@ -62,6 +66,7 @@
             margin: 0 auto;
             width: 100%;
             text-align: center;
+            font-weight: 600;
         }
         
         .qr-instructions {
@@ -71,9 +76,46 @@
         
         .qr-code-title {
             font-size: 22px;
-            font-weight: bold;
+            font-weight: 600;
             text-align: center;
             margin: 0 0 20px 0;
+        }
+        
+        .main_title {
+            font-weight: 600;
+            font-size: 24px;
+        }
+        
+        .description {
+            font-weight: 400;
+        }
+        
+        .action_title {
+            font-weight: 500;
+        }
+        
+        .action_subtitle {
+            font-weight: 300;
+        }
+        
+        .error_title {
+            font-weight: 600;
+        }
+        
+        .error_description {
+            font-weight: 400;
+        }
+        
+        .error_button {
+            font-weight: 500;
+        }
+        
+        .bottom_element_text {
+            font-weight: 400;
+        }
+        
+        .bottom_element_text.open {
+            font-weight: 500;
         }
     </style>
 </head>
@@ -85,8 +127,8 @@
         </div>
         
         <div class="qr-instructions">
-            <h2 style="font-size: 22px; margin-bottom: 10px;">Pokaż kod QR osobie, której dokument sprawdzasz</h2>
-            <p style="color: #666; margin: 0 30px; font-size: 16px; line-height: 1.5;">
+            <h2 style="font-size: 22px; margin-bottom: 10px; font-weight: 600;">Pokaż kod QR osobie, której dokument sprawdzasz</h2>
+            <p style="color: #666; margin: 0 30px; font-size: 16px; line-height: 1.5; font-weight: 400;">
                 Gdy ta osoba zeskanuje lub przepisze kod, zobaczysz jej dane na swoim telefonie.
             </p>
         </div>
@@ -97,11 +139,11 @@
                 <img src="assets/images/QR.png" style="width: 350px; height: 350; border: 1px solid #eee;">
             </div>
             
-            <div style="font-size: 40px; font-weight: bold; letter-spacing: 3px; margin: 20px 0;">
+            <div style="font-size: 40px; font-weight: 600; letter-spacing: 3px; margin: 20px 0;">
                 523123
             </div>
             
-            <div style="color: #666; font-size: 30px;">
+            <div style="color: #666; font-size: 30px; font-weight: 400;">
                 Kod wygaśnie za: <span id="countdown">2 min 30 sek.</span>
             </div>
         </div>
