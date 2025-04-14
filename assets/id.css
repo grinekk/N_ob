@@ -1,4 +1,7 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+body {
+    font-family: 'Poppins', 'Roboto', sans-serif;
+}
 .login_title{
     font-weight: 700;
     font-size: 23px;
@@ -151,7 +154,7 @@
     width: 100%;
     height: 100%;
     z-index: -1;
-    background-image: url('https://i.imgur.com/JLbwulF.png');
+    background-image: url('https://i.imgur.com/uZgy22A.png');
     background-size: 105%;
     background-position: center;
 }
@@ -207,4 +210,3 @@
     width: max-content;
     margin-left: auto;
 }
-/* dsdada*/

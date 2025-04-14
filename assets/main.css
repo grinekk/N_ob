@@ -19,11 +19,8 @@ body{
     background-color: #f5f6fb;
 }
 
-p, input{
-    font-family: "Poppins", sans-serif;
-}
-
 *{
+    font-family: "Poppins", sans-serif;
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
@@ -40,6 +37,61 @@ p, input{
 
 ::-webkit-scrollbar-thumb {
     display: none;
+}
+
+.top_grid_fixed{
+    z-index: 2;
+    background-color: #f5f6fb;
+    position: fixed;
+    top: -10px;
+    height: 60px;
+    left: 0;
+    width: 100%;
+    display: grid;
+    margin-top: 10px;
+    grid-template-columns: repeat(3, calc(100% / 3));
+}
+
+.action_grid_fixed{
+    cursor: pointer;
+    margin-left: 10px;
+    display: grid;
+    grid-template-columns: max-content max-content;
+}
+
+.back_img_fixed{
+    width: 17px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.back_text_fixed{
+    color: #014A93;
+    font-weight: 500;
+    font-size: 18px;
+    height: max-content;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.title_text_fixed{
+    font-size: 18px;
+    color: #3b3c41;
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: max-content;
+}
+
+.help_img_fixed{
+    width: 30px;
+    margin-right: 10px;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    cursor: pointer;
 }
 
 .main_button{
@@ -221,4 +273,3 @@ p, input{
     margin-right: 0px;
     margin-left: auto;
 }
-/* dsdada*/

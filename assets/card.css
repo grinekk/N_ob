@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+
+
 body .bottom_bar{
     z-index: 1;
 }
@@ -61,8 +64,6 @@ body .bottom_bar{
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: max-content max-content;
-    margin-bottom: 8px;
-    margin-top: 1mm;
 }
 
 .flag_video{
@@ -70,6 +71,7 @@ body .bottom_bar{
     top: 50.5%;
     left: 7.5%;
     width: 18.9%;
+    padding: 1px;
 }
 
 .eagle_text{
@@ -549,4 +551,3 @@ body .bottom_bar{
 .page_3_open .page_3{
     bottom: 0;
 }
-/* dsdada*/

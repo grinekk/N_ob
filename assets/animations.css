@@ -1,0 +1,101 @@
+.fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.slide-in {
+    animation: slideIn 0.8s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.zoom-in {
+    animation: zoomIn 0.5s ease-in-out;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.bounce {
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.animated-selector {
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Smooth transition */
+}
+
+.selector_box {
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Smooth transition */
+}
+
+.selector_open {
+    max-height: 400px; /* Expand when open */
+    opacity: 1;
+    overflow: visible;
+    animation: openSelector 0.5s ease-in-out; /* Smooth opening animation */
+}
+
+.selector_close {
+    max-height: 45px; /* Collapse when closed */
+    opacity: 1;
+    overflow: hidden;
+    animation: closeSelector 0.5s ease-in-out; /* Smooth closing animation */
+}
+
+@keyframes openSelector {
+    from {
+        max-height: 45px;
+        opacity: 0.5;
+    }
+    to {
+        max-height: 400px;
+        opacity: 1;
+    }
+}
+
+@keyframes closeSelector {
+    from {
+        max-height: 400px;
+        opacity: 1;
+    }
+    to {
+        max-height: 45px;
+        opacity: 0.5;
+    }
+}

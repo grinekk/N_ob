@@ -1,3 +1,4 @@
+
 var confirmElement = document.querySelector(".confirm");
 
 function closePage(){
@@ -20,11 +21,10 @@ function clearClassList(){
 }
 
 var time = document.getElementById("time");
-var options = { year: 'numeric', month: 'numeric', day: '2-digit' };
-var optionsTime = { second: 'numeric', minute: 'numeric', hour: '2-digit' };
+var options = { year: 'numeric', month: 'numeric', day: 'numeric' };
 
 if (localStorage.getItem("update") == null){
-  localStorage.setItem("update", "12.04.2025")
+  localStorage.setItem("update", "24.12.2024")
 }
 
 var date = new Date();
@@ -47,8 +47,8 @@ function delay(time) {
 
 setClock();
 function setClock(){
-    date = new Date();
-    time.innerHTML = "Czas: " + date.toLocaleTimeString("pl-PL", optionsTime) + " " + date.toLocaleDateString("pl-PL", options);    
+    date = new Date()
+    time.innerHTML = "Czas: " + date.toLocaleTimeString() + " " + date.toLocaleDateString("pl-PL", options);    
     delay(1000).then(() => {
         setClock();
     })
@@ -72,17 +72,7 @@ for (var key of params.keys()){
   data[key] = params.get(key);
 }
 
-// Get image from URL parameters
-const userImage = localStorage.getItem('userImage');
-document.querySelector(".id_own_image").style.backgroundImage = userImage ? `url(${userImage})` : '';
-
-// If no image in localStorage, check URL parameters
-const urlParams = new URLSearchParams(window.location.search);
-if (urlParams.has('image')) {
-    const imageUrl = urlParams.get('image');
-    document.querySelector(".id_own_image").style.backgroundImage = `url(${imageUrl})`;
-    localStorage.setItem('userImage', imageUrl);
-}
+document.querySelector(".id_own_image").style.backgroundImage = `url(${data['image']})`;
 
 var birthday = data['birthday'];
 var birthdaySplit = birthday.split(".");
@@ -164,22 +154,3 @@ function setData(id, value){
 function getRandom(min, max) {
   return parseInt(Math.random() * (max - min) + min);
 }
-
-function sendTo(url) {
-    // Get previously saved URL parameters from localStorage
-    const savedParams = localStorage.getItem('lastParams');
-    if (savedParams) {
-        location.href = url + ".html?" + savedParams;
-    } else {
-        location.href = url + ".html" + window.location.search;
-    }
-}
-
-// Save current URL parameters when page loads
-window.addEventListener('load', () => {
-    const currentParams = window.location.search.substring(1); // Remove the '?' at the start
-    if (currentParams) {
-        localStorage.setItem('lastParams', currentParams);
-    }
-});
-//dada
