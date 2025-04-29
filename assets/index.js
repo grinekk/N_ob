@@ -150,26 +150,35 @@ imageInput.addEventListener('change', () => {
     const data = new FormData();
     data.append("image", file);
 
-    fetch('https://api.imgur.com/3/image', {
+    // Klucz API ImgBB (możesz go zmienić na swój własny)
+    const apiKey = '1b19f8cdd81486fd7f0f29a7111fc0df'; // Tutaj wstaw swój klucz API z ImgBB
+    
+    fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`, {
         method: 'POST',
-        headers: {
-            'Authorization': 'Client-ID 295027f296bc174'
-        },
         body: data
     })
     .then(result => result.json())
     .then(response => {
-        const url = response.data.link;
-        upload.classList.remove("error_shown");
-        upload.setAttribute("selected", url);
-        upload.classList.add("upload_loaded");
-        upload.classList.remove("upload_loading");
+        if(response.success) {
+            const url = response.data.url;
+            upload.classList.remove("error_shown");
+            upload.setAttribute("selected", url);
+            upload.classList.add("upload_loaded");
+            upload.classList.remove("upload_loading");
 
-        const uploadedImage = upload.querySelector(".upload_uploaded");
-        if (uploadedImage) {
-            uploadedImage.src = url; // Set the uploaded image URL
-            uploadedImage.style.display = "block"; // Ensure the image is visible
+            const uploadedImage = upload.querySelector(".upload_uploaded");
+            if (uploadedImage) {
+                uploadedImage.src = url;
+                uploadedImage.style.display = "block";
+            }
+        } else {
+            throw new Error('Upload failed');
         }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        upload.classList.remove("upload_loading");
+        upload.classList.add("error_shown");
     });
 });
 
