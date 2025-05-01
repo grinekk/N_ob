@@ -1,26 +1,159 @@
+<!DOCTYPE html>
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="assets/index.css">
     <link rel="stylesheet" href="assets/animations.css">
-    <link rel="icon" type="image/x-icon" href="assets/mobywatellogo.svg"> <!-- Fixed 'src' to 'href' -->
-    <title>mObywatel</title>
+    <link rel="icon" type="image/x-icon" href="assets/mobywatellogo.svg">
+    <title>Nobywatel</title>
     <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no">
+    <style>
+        /* Login page styles */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        
+        .login-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+            background: #f1f1f1;
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .login-logo_text {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #333;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .login-subtext {
+            font-size: 1rem;
+            color: #777;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .login-input_holder {
+            position: relative;
+            margin-bottom: 1.5rem;
+            width: 100%;
+            max-width: 350px;
+        }
+        
+        .login-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            background: transparent;
+            outline: none;
+            transition: border 0.2s;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .login-placeholder {
+            position: absolute;
+            top: 50%;
+            left: 1rem;
+            transform: translateY(-50%);
+            background: #f1f1f1;
+            padding: 0 0.25rem;
+            color: #999;
+            transition: all 0.2s ease;
+            pointer-events: none;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .login-input:focus + .login-placeholder,
+        .login-input:not(:placeholder-shown) + .login-placeholder {
+            top: -8px;
+            font-size: 0.75rem;
+            color: #333;
+        }
+        
+        .login-input_holder.error_shown .login-input {
+            border-color: #ff4d4f;
+        }
+        
+        .login-input_holder.error_shown .login-placeholder {
+            color: #ff4d4f;
+        }
+        
+        .login-error {
+            color: #ff4d4f;
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+            display: none;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .login-input_holder.error_shown .login-error {
+            display: block;
+        }
+        
+        .login-button {
+            background-color: #333;
+            color: white;
+            font-weight: bold;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            border: none;
+            width: 100%;
+            max-width: 350px;
+        }
+        
+        .login-button:hover {
+            background-color: #555;
+        }
+        
+        /* Hide the main content initially */
+        .main-content {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
+    <!-- Login Section -->
+    <div class="login-container" id="login-section">
+        <div class="login-header">
+            <div class="login-logo_text">Zaloguj się</div>
+            <p class="login-subtext">Wprowadź hasło, aby kontynuować</p>
+        </div>
+
+        <div class="login-input_holder" id="password-form">
+            <input type="password" id="password" class="login-input" placeholder=" " required />
+            <label for="password" class="login-placeholder">Hasło</label>
+            <div class="login-error">Nieprawidłowe hasło</div>
+        </div>
+
+        <button class="login-button" onclick="submitLogin()">Zaloguj się</button>
+    </div>
+
+    <!-- Main Content (hidden until login) -->
+    <div class="container main-content" id="main-content">
         <p class="logo_text">Nobywatel</p>
 
         <p class="warning highlight">
             Pamiętaj ta strona służy do generowania dowodów w celach edukacyjnych lub do wykorzystania w produkcjach filmowych, używanie wygenerowanego dowodu jako oryginału wystawionego przez państwo jest nielegalne.
         </p>
 
-
         <div class="upload zoom-in">
             <p class="error">To pole jest wymagane</p>
-            <img class="upload_uploaded" alt="Uploaded Image"> <!-- Added 'alt' attribute -->
+            <img class="upload_uploaded" alt="Uploaded Image">
             <div class="upload_uploading"></div>
             <div class="upload_grid">
-                <img class="upload_image" src="https://i.imgur.com/vwIQErh.png" alt="Dodaj zdjęcie"> <!-- Added 'alt' attribute -->
+                <img class="upload_image" src="https://i.imgur.com/vwIQErh.png" alt="Dodaj zdjęcie">
                 <p class="upload_text">Dodaj zdjęcie</p>
             </div>
         </div>
@@ -116,6 +249,22 @@
             <a class="reset button gray" onclick="resetForm()">resetuj</a>
         </div>
     </div>
+
+    <script>
+        function submitLogin() {
+            const password = document.getElementById("password");
+            const correctPassword = "2468";
+            const isValid = password.value === correctPassword;
+        
+            password.parentElement.classList.toggle("error_shown", !isValid);
+        
+            if (isValid) {
+                document.getElementById("login-section").style.display = "none";
+                document.getElementById("main-content").style.display = "block";
+            }
+        }
+    </script>
+    
     <script src="assets/index.js"></script>
     <script src="assets/manifest.js"></script>
 </body>
