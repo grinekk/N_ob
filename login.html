@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logowanie</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #f1f1f1;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .header-container {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .logo_text {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .subtext {
+      font-size: 1rem;
+      color: #777;
+    }
+
+    .input_holder {
+      position: relative;
+      margin-bottom: 1.5rem;
+      width: 100%;
+      max-width: 350px;
+    }
+
+    .input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      background: transparent;
+      outline: none;
+      transition: border 0.2s;
+      font-size: 1rem;
+    }
+
+    .placeholder {
+      position: absolute;
+      top: 50%;
+      left: 1rem;
+      transform: translateY(-50%);
+      background: #f1f1f1;
+      padding: 0 0.25rem;
+      color: #999;
+      transition: all 0.2s ease;
+      pointer-events: none;
+    }
+
+    .input:focus + .placeholder,
+    .input:not(:placeholder-shown) + .placeholder {
+      top: -8px;
+      font-size: 0.75rem;
+      color: #333;
+    }
+
+    .input_holder.error_shown .input {
+      border-color: #ff4d4f;
+    }
+
+    .input_holder.error_shown .placeholder {
+      color: #ff4d4f;
+    }
+
+    .error {
+      color: #ff4d4f;
+      font-size: 0.8rem;
+      margin-top: 0.25rem;
+      display: none;
+    }
+
+    .input_holder.error_shown .error {
+      display: block;
+    }
+
+    .go {
+      background-color: #333;
+      color: white;
+      font-weight: bold;
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-align: center;
+    }
+
+    .go:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="header-container">
+    <div class="logo_text">Zaloguj się</div>
+    <p class="subtext">Wprowadź hasło, aby kontynuować</p>
+  </div>
+
+  <form class="input_holder" id="password-form">
+    <input type="password" id="password" class="input" placeholder=" " required />
+    <label for="password" class="placeholder">Hasło</label>
+    <div class="error">Nieprawidłowe hasło</div>
+  </form>
+
+  <div class="go" onclick="submitLogin()">Zaloguj się</div>
+
+  <script>
+    function submitLogin() {
+      const password = document.getElementById("password");
+      const correctPassword = "2468";
+      const isValid = password.value === correctPassword;
+  
+      password.parentElement.classList.toggle("error_shown", !isValid);
+  
+      if (isValid) {
+        window.location.href = "index.html"; // PRZEKIEROWANIE do strony głównej
+      }
+    }
+  </script>
+  
+</body>
+</html>
